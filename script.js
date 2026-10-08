@@ -1,769 +1,725 @@
-```javascript
-/* =========================================================
-   SKILLSWAP — FRONTEND APPLICATION
-   No PHP / No MySQL
-   Uses JavaScript + localStorage
-   ========================================================= */
+/* =====================================================
+   SKILLSWAP JAVASCRIPT
+   FRONTEND ONLY
+===================================================== */
 
 
-/* =========================================================
-   DUMMY MEMBERS
-   ========================================================= */
+/* =====================================================
+   DATA
+===================================================== */
 
 const members = [
+
     {
-        id: 1,
-        name: "Aarav Mehta",
-        role: "Full Stack Developer",
-        offer: "Python",
-        want: "UI/UX Design",
-        skills: ["Python", "React", "Node.js"],
-        location: "Ahmedabad",
-        bio: "Building web applications and always looking to improve my design skills.",
-        online: true
+        name: "Aarav Patel",
+        initials: "AP",
+        role: "Computer Science Student",
+        skills: ["Python", "AI", "C++"]
     },
 
     {
-        id: 2,
-        name: "Riya Patel",
+        name: "Riya Shah",
+        initials: "RS",
         role: "UI/UX Designer",
-        offer: "Figma",
-        want: "Python",
-        skills: ["Figma", "UI Design", "Branding"],
-        location: "Ahmedabad",
-        bio: "I turn ideas into clean and meaningful digital experiences.",
-        online: true
+        skills: ["Figma", "UI Design", "Branding"]
     },
 
     {
-        id: 3,
-        name: "Arjun Shah",
-        role: "Frontend Developer",
-        offer: "React",
-        want: "Video Editing",
-        skills: ["React", "JavaScript", "CSS"],
-        location: "Mumbai",
-        bio: "Frontend enthusiast who loves creating interactive experiences.",
-        online: true
+        name: "Arjun Mehta",
+        initials: "AM",
+        role: "Full Stack Developer",
+        skills: ["React", "Node.js", "MongoDB"]
     },
 
     {
-        id: 4,
         name: "Meera Joshi",
-        role: "Content Creator",
-        offer: "Video Editing",
-        want: "Digital Marketing",
-        skills: ["Premiere Pro", "CapCut", "Content"],
-        location: "Delhi",
-        bio: "Content creator helping brands tell better stories.",
-        online: false
+        initials: "MJ",
+        role: "Digital Marketer",
+        skills: ["SEO", "Marketing", "Content"]
     },
 
     {
-        id: 5,
-        name: "Kabir Verma",
-        role: "Data Science Student",
-        offer: "Python",
-        want: "Graphic Design",
-        skills: ["Python", "Pandas", "Machine Learning"],
-        location: "Pune",
-        bio: "Learning data science one project at a time.",
-        online: true
+        name: "Kabir Khan",
+        initials: "KK",
+        role: "Video Creator",
+        skills: ["Premiere Pro", "Editing", "Reels"]
     },
 
     {
-        id: 6,
-        name: "Ananya Rao",
+        name: "Ananya Desai",
+        initials: "AD",
         role: "Graphic Designer",
-        offer: "Photoshop",
-        want: "Web Development",
-        skills: ["Photoshop", "Illustrator", "Canva"],
-        location: "Bangalore",
-        bio: "Visual designer who enjoys collaborating with developers.",
-        online: true
+        skills: ["Photoshop", "Illustrator", "Canva"]
     },
 
     {
-        id: 7,
-        name: "Dev Malhotra",
-        role: "Marketing Student",
-        offer: "Digital Marketing",
-        want: "Video Editing",
-        skills: ["SEO", "Marketing", "Analytics"],
-        location: "Jaipur",
-        bio: "Interested in growth, marketing and creative storytelling.",
-        online: false
+        name: "Dev Patel",
+        initials: "DP",
+        role: "Data Science Student",
+        skills: ["Python", "SQL", "Statistics"]
     },
 
     {
-        id: 8,
+        name: "Sara Khan",
+        initials: "SK",
+        role: "Content Creator",
+        skills: ["Writing", "Instagram", "Copywriting"]
+    },
+
+    {
+        name: "Yash Shah",
+        initials: "YS",
+        role: "Cyber Security Student",
+        skills: ["Linux", "Networking", "Security"]
+    },
+
+    {
+        name: "Ishita Mehta",
+        initials: "IM",
+        role: "Business Student",
+        skills: ["Excel", "Finance", "Business"]
+    },
+
+    {
+        name: "Vivaan Patel",
+        initials: "VP",
+        role: "Web Developer",
+        skills: ["HTML", "CSS", "JavaScript"]
+    },
+
+    {
+        name: "Nisha Shah",
+        initials: "NS",
+        role: "Illustrator",
+        skills: ["Drawing", "Illustration", "Art"]
+    },
+
+    {
+        name: "Rehan Khan",
+        initials: "RK",
+        role: "Mobile Developer",
+        skills: ["Flutter", "Dart", "Firebase"]
+    },
+
+    {
+        name: "Diya Mehta",
+        initials: "DM",
+        role: "Communication Coach",
+        skills: ["English", "Speaking", "Presentation"]
+    },
+
+    {
+        name: "Karan Joshi",
+        initials: "KJ",
+        role: "Game Developer",
+        skills: ["Unity", "C#", "3D"]
+    },
+
+    {
+        name: "Aisha Patel",
+        initials: "AI",
+        role: "Photography Student",
+        skills: ["Photography", "Lightroom", "Editing"]
+    },
+
+    {
+        name: "Rohan Shah",
+        initials: "RS",
+        role: "Cloud Computing Student",
+        skills: ["AWS", "Cloud", "DevOps"]
+    },
+
+    {
+        name: "Maya Desai",
+        initials: "MD",
+        role: "Fashion Designer",
+        skills: ["Fashion", "Sketching", "Design"]
+    },
+
+    {
+        name: "Aditya Kumar",
+        initials: "AK",
+        role: "Machine Learning Student",
+        skills: ["ML", "Python", "Data"]
+    },
+
+    {
         name: "Zoya Khan",
+        initials: "ZK",
+        role: "Social Media Manager",
+        skills: ["Social Media", "Content", "Marketing"]
+    }
+
+];
+
+
+let listings = [
+
+    {
+        title: "Python Programming",
+        category: "Technology",
+        description: "I can teach Python from fundamentals to intermediate programming.",
+        exchange: "UI/UX Design",
+        user: "Aarav Patel",
+        initials: "AP",
+        popularity: 98
+    },
+
+    {
+        title: "UI/UX Design",
+        category: "Design",
+        description: "Learn Figma, wireframing, design systems and modern interfaces.",
+        exchange: "JavaScript",
+        user: "Riya Shah",
+        initials: "RS",
+        popularity: 96
+    },
+
+    {
+        title: "Video Editing",
+        category: "Creative",
+        description: "Learn Premiere Pro and create professional short-form videos.",
+        exchange: "Photography",
+        user: "Kabir Khan",
+        initials: "KK",
+        popularity: 94
+    },
+
+    {
+        title: "Digital Marketing",
+        category: "Marketing",
+        description: "Learn social media strategy, SEO and content marketing.",
+        exchange: "Graphic Design",
+        user: "Meera Joshi",
+        initials: "MJ",
+        popularity: 91
+    },
+
+    {
+        title: "C++ Programming",
+        category: "Technology",
+        description: "Object-oriented programming and DSA fundamentals.",
+        exchange: "Video Editing",
+        user: "Dev Patel",
+        initials: "DP",
+        popularity: 89
+    },
+
+    {
+        title: "Photoshop",
+        category: "Design",
+        description: "Learn professional photo manipulation and creative design.",
+        exchange: "Python",
+        user: "Ananya Desai",
+        initials: "AD",
+        popularity: 87
+    },
+
+    {
+        title: "Excel & Data Analysis",
+        category: "Business",
+        description: "Learn spreadsheets, formulas, charts and basic analysis.",
+        exchange: "Web Development",
+        user: "Ishita Mehta",
+        initials: "IM",
+        popularity: 84
+    },
+
+    {
+        title: "JavaScript",
+        category: "Technology",
+        description: "Build interactive websites using modern JavaScript.",
+        exchange: "Graphic Design",
+        user: "Vivaan Patel",
+        initials: "VP",
+        popularity: 82
+    },
+
+    {
+        title: "Content Writing",
+        category: "Marketing",
+        description: "Learn copywriting, captions and long-form content writing.",
+        exchange: "Video Editing",
+        user: "Sara Khan",
+        initials: "SK",
+        popularity: 80
+    },
+
+    {
+        title: "Cyber Security",
+        category: "Technology",
+        description: "Learn Linux, networking and basic security concepts.",
+        exchange: "Python",
+        user: "Yash Shah",
+        initials: "YS",
+        popularity: 78
+    },
+
+    {
+        title: "English Speaking",
+        category: "Academic",
+        description: "Improve communication, presentation and speaking skills.",
+        exchange: "Photoshop",
+        user: "Diya Mehta",
+        initials: "DM",
+        popularity: 76
+    },
+
+    {
+        title: "Photography",
+        category: "Creative",
+        description: "Learn composition, camera basics and Lightroom editing.",
+        exchange: "Social Media",
+        user: "Aisha Patel",
+        initials: "AI",
+        popularity: 73
+    }
+
+];
+
+
+const incomingRequests = [
+
+    {
+        name: "Riya Shah",
+        initials: "RS",
+        role: "UI/UX Designer",
+        offer: "UI/UX Design",
+        want: "JavaScript"
+    },
+
+    {
+        name: "Kabir Khan",
+        initials: "KK",
+        role: "Video Creator",
+        offer: "Video Editing",
+        want: "C++"
+    },
+
+    {
+        name: "Meera Joshi",
+        initials: "MJ",
+        role: "Digital Marketer",
+        offer: "Digital Marketing",
+        want: "Photoshop"
+    },
+
+    {
+        name: "Aisha Patel",
+        initials: "AI",
+        role: "Photography Student",
+        offer: "Photography",
+        want: "Web Development"
+    }
+
+];
+
+
+const sentRequests = [
+
+    {
+        name: "Arjun Mehta",
+        initials: "AM",
+        role: "Full Stack Developer",
+        offer: "JavaScript",
+        want: "React"
+    },
+
+    {
+        name: "Nisha Shah",
+        initials: "NS",
         role: "Illustrator",
         offer: "Illustration",
-        want: "Photography",
-        skills: ["Illustration", "Procreate", "Sketching"],
-        location: "Ahmedabad",
-        bio: "Digital illustrator looking to explore photography.",
-        online: true
+        want: "Python"
     },
 
     {
-        id: 9,
-        name: "Yash Desai",
-        role: "Cybersecurity Student",
-        offer: "Cybersecurity",
-        want: "Public Speaking",
-        skills: ["Networking", "Linux", "Cybersecurity"],
-        location: "Surat",
-        bio: "Cybersecurity learner passionate about ethical hacking.",
-        online: true
-    },
-
-    {
-        id: 10,
-        name: "Ishita Kapoor",
-        role: "Business Student",
-        offer: "Excel",
-        want: "Python",
-        skills: ["Excel", "PowerPoint", "Business"],
-        location: "Delhi",
-        bio: "Business student exploring automation and technology.",
-        online: false
-    },
-
-    {
-        id: 11,
-        name: "Dhruv Patel",
-        role: "Mobile Developer",
-        offer: "Flutter",
-        want: "UI Design",
-        skills: ["Flutter", "Dart", "Firebase"],
-        location: "Vadodara",
-        bio: "Building mobile apps and looking for creative design partners.",
-        online: true
-    },
-
-    {
-        id: 12,
-        name: "Sara Thomas",
-        role: "Photographer",
-        offer: "Photography",
-        want: "Social Media Marketing",
-        skills: ["Photography", "Lightroom", "Portraits"],
-        location: "Goa",
-        bio: "Photographer specializing in portraits and lifestyle shoots.",
-        online: true
-    },
-
-    {
-        id: 13,
-        name: "Neil Kapoor",
-        role: "Java Developer",
-        offer: "Java",
-        want: "Public Speaking",
-        skills: ["Java", "Spring", "SQL"],
-        location: "Hyderabad",
-        bio: "Backend developer working towards becoming a better communicator.",
-        online: false
-    },
-
-    {
-        id: 14,
-        name: "Priya Nair",
-        role: "Product Designer",
-        offer: "Product Design",
-        want: "Frontend Development",
-        skills: ["Figma", "UX Research", "Wireframing"],
-        location: "Kochi",
-        bio: "Product designer interested in learning how interfaces are built.",
-        online: true
-    },
-
-    {
-        id: 15,
-        name: "Rehan Sheikh",
-        role: "Video Editor",
-        offer: "Premiere Pro",
-        want: "Motion Graphics",
-        skills: ["Premiere Pro", "DaVinci", "Editing"],
-        location: "Mumbai",
-        bio: "Video editor looking to level up motion graphics skills.",
-        online: true
-    },
-
-    {
-        id: 16,
-        name: "Tanya Singh",
-        role: "English Tutor",
-        offer: "English",
-        want: "Graphic Design",
-        skills: ["English", "Communication", "Writing"],
-        location: "Lucknow",
-        bio: "Helping students communicate confidently.",
-        online: false
-    },
-
-    {
-        id: 17,
-        name: "Aditya Jain",
-        role: "Cloud Student",
+        name: "Rohan Shah",
+        initials: "RS",
+        role: "Cloud Computing Student",
         offer: "AWS",
-        want: "Python",
-        skills: ["AWS", "Cloud", "Linux"],
-        location: "Indore",
-        bio: "Cloud enthusiast learning automation and scripting.",
-        online: true
+        want: "C++"
+    }
+
+];
+
+
+const acceptedRequests = [
+
+    {
+        name: "Aditya Kumar",
+        initials: "AK",
+        role: "Machine Learning Student",
+        offer: "Machine Learning",
+        want: "Web Development"
     },
 
     {
-        id: 18,
-        name: "Simran Kaur",
+        name: "Zoya Khan",
+        initials: "ZK",
         role: "Social Media Manager",
         offer: "Social Media",
-        want: "Photography",
-        skills: ["Instagram", "Content", "Marketing"],
-        location: "Chandigarh",
-        bio: "Helping creators and businesses grow online.",
-        online: true
-    },
-
-    {
-        id: 19,
-        name: "Om Trivedi",
-        role: "C++ Developer",
-        offer: "C++",
-        want: "UI/UX Design",
-        skills: ["C++", "DSA", "Algorithms"],
-        location: "Ahmedabad",
-        bio: "Competitive programming enthusiast and DSA learner.",
-        online: false
-    },
-
-    {
-        id: 20,
-        name: "Nisha Gupta",
-        role: "HR Student",
-        offer: "Interview Skills",
-        want: "Excel",
-        skills: ["HR", "Communication", "Interviews"],
-        location: "Noida",
-        bio: "Interested in people, communication and career development.",
-        online: true
+        want: "Video Editing"
     }
+
 ];
 
 
-/* =========================================================
-   LISTINGS
-   ========================================================= */
-
-const listings = [
-    {
-        user: 1,
-        category: "Development",
-        offer: "Python",
-        want: "UI/UX Design",
-        description: "Can teach Python from fundamentals to real-world projects."
-    },
-
-    {
-        user: 2,
-        category: "Design",
-        offer: "Figma",
-        want: "Python",
-        description: "I can teach modern UI design and Figma workflows."
-    },
-
-    {
-        user: 3,
-        category: "Development",
-        offer: "React",
-        want: "Video Editing",
-        description: "Looking to exchange frontend development knowledge."
-    },
-
-    {
-        user: 4,
-        category: "Creative",
-        offer: "Video Editing",
-        want: "Digital Marketing",
-        description: "Premiere Pro and CapCut editing for marketing guidance."
-    },
-
-    {
-        user: 5,
-        category: "Development",
-        offer: "Python",
-        want: "Graphic Design",
-        description: "Python, automation and beginner machine learning."
-    },
-
-    {
-        user: 6,
-        category: "Design",
-        offer: "Graphic Design",
-        want: "Web Development",
-        description: "Photoshop, Illustrator and branding in exchange for coding."
-    },
-
-    {
-        user: 7,
-        category: "Business",
-        offer: "Digital Marketing",
-        want: "Video Editing",
-        description: "SEO, Instagram strategy and analytics."
-    },
-
-    {
-        user: 8,
-        category: "Creative",
-        offer: "Illustration",
-        want: "Photography",
-        description: "Digital illustration and Procreate techniques."
-    },
-
-    {
-        user: 9,
-        category: "Development",
-        offer: "Cybersecurity",
-        want: "Public Speaking",
-        description: "Networking, Linux and cybersecurity basics."
-    },
-
-    {
-        user: 10,
-        category: "Business",
-        offer: "Excel",
-        want: "Python",
-        description: "Excel formulas, dashboards and data organization."
-    },
-
-    {
-        user: 11,
-        category: "Development",
-        offer: "Flutter",
-        want: "UI Design",
-        description: "Mobile development with Flutter and Dart."
-    },
-
-    {
-        user: 12,
-        category: "Creative",
-        offer: "Photography",
-        want: "Social Media Marketing",
-        description: "Portrait and lifestyle photography."
-    },
-
-    {
-        user: 13,
-        category: "Development",
-        offer: "Java",
-        want: "Public Speaking",
-        description: "Java and Spring backend development."
-    },
-
-    {
-        user: 14,
-        category: "Design",
-        offer: "Product Design",
-        want: "Frontend Development",
-        description: "UX research, wireframes and product design."
-    },
-
-    {
-        user: 15,
-        category: "Creative",
-        offer: "Video Editing",
-        want: "Motion Graphics",
-        description: "Premiere Pro and professional video editing."
-    },
-
-    {
-        user: 16,
-        category: "Academic",
-        offer: "English",
-        want: "Graphic Design",
-        description: "Spoken English, grammar and communication."
-    },
-
-    {
-        user: 17,
-        category: "Development",
-        offer: "AWS",
-        want: "Python",
-        description: "AWS cloud fundamentals and deployment."
-    },
-
-    {
-        user: 18,
-        category: "Business",
-        offer: "Social Media",
-        want: "Photography",
-        description: "Instagram growth and content strategy."
-    },
-
-    {
-        user: 19,
-        category: "Development",
-        offer: "C++",
-        want: "UI/UX Design",
-        description: "C++, DSA and competitive programming."
-    },
-
-    {
-        user: 20,
-        category: "Business",
-        offer: "Interview Skills",
-        want: "Excel",
-        description: "Mock interviews and communication improvement."
-    }
-];
-
-
-/* =========================================================
-   REQUESTS
-   ========================================================= */
-
-let requests = [
-    {
-        id: 1,
-        type: "incoming",
-        from: 2,
-        message: "I'd love to learn Python from you.",
-        offer: "Figma",
-        want: "Python",
-        status: "Pending"
-    },
-
-    {
-        id: 2,
-        type: "incoming",
-        from: 7,
-        message: "Can we exchange marketing and editing skills?",
-        offer: "Digital Marketing",
-        want: "Video Editing",
-        status: "Pending"
-    },
-
-    {
-        id: 3,
-        type: "incoming",
-        from: 12,
-        message: "Interested in your content strategy skills.",
-        offer: "Photography",
-        want: "Social Media Marketing",
-        status: "Pending"
-    },
-
-    {
-        id: 4,
-        type: "outgoing",
-        from: 14,
-        message: "Would love to learn product design.",
-        offer: "C++ / DSA",
-        want: "Product Design",
-        status: "Pending"
-    },
-
-    {
-        id: 5,
-        type: "outgoing",
-        from: 4,
-        message: "Interested in learning video editing.",
-        offer: "Digital Marketing",
-        want: "Video Editing",
-        status: "Pending"
-    },
-
-    {
-        id: 6,
-        type: "accepted",
-        from: 3,
-        message: "Let's start our React exchange.",
-        offer: "React",
-        want: "Video Editing",
-        status: "Accepted"
-    },
-
-    {
-        id: 7,
-        type: "accepted",
-        from: 6,
-        message: "Design and coding exchange confirmed.",
-        offer: "C++",
-        want: "Graphic Design",
-        status: "Accepted"
-    }
-];
-
-
-/* =========================================================
+/* =====================================================
    PAGE NAVIGATION
-   ========================================================= */
+===================================================== */
 
 function showPage(pageId) {
 
-    document.querySelectorAll(".page").forEach(page => {
+    const pages = document.querySelectorAll(".page");
+
+    pages.forEach(page => {
+
         page.classList.remove("active-page");
+
     });
 
-    const page = document.getElementById(pageId);
 
-    if (page) {
-        page.classList.add("active-page");
+    const selectedPage = document.getElementById(pageId);
+
+    if (selectedPage) {
+
+        selectedPage.classList.add("active-page");
+
     }
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
-        link.classList.remove("active");
 
-        if (link.getAttribute("href") === "#" + pageId) {
-            link.classList.add("active");
-        }
+    document.querySelectorAll(".nav-btn").forEach(button => {
+
+        button.classList.remove("active");
+
     });
+
+
+    const activeNav = document.getElementById("nav-" + pageId);
+
+    if (activeNav) {
+
+        activeNav.classList.add("active");
+
+    }
+
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
 
+
     if (pageId === "explore") {
+
         renderListings();
+
     }
+
 
     if (pageId === "members") {
+
         renderMembers();
+
     }
+
 
     if (pageId === "requests") {
+
         renderRequests("incoming");
+
     }
+
 }
 
 
-/* =========================================================
-   MOBILE MENU
-   ========================================================= */
+/* =====================================================
+   NOTIFICATIONS
+===================================================== */
 
-function toggleMobileMenu() {
-    document.getElementById("mobileMenu").classList.toggle("show");
+function toggleNotifications() {
+
+    const panel =
+        document.getElementById("notificationPanel");
+
+    panel.classList.toggle("show");
+
 }
 
 
-/* =========================================================
-   PRELOADER
-   ========================================================= */
+/* =====================================================
+   PROFILE
+===================================================== */
 
-window.addEventListener("load", () => {
+function openProfile() {
 
-    setTimeout(() => {
-        document.getElementById("preloader").classList.add("hide");
-    }, 800);
+    document
+        .getElementById("profileModal")
+        .classList.add("show");
 
-    animateStats();
+}
+
+
+function closeModal(id) {
+
+    document
+        .getElementById(id)
+        .classList.remove("show");
+
+}
+
+
+/* =====================================================
+   POST SKILL
+===================================================== */
+
+function openPostModal() {
+
+    document
+        .getElementById("postModal")
+        .classList.add("show");
+
+}
+
+
+function createListing(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById("skillName").value;
+
+    const category =
+        document.getElementById("skillCategory").value;
+
+    const exchange =
+        document.getElementById("skillExchange").value;
+
+    const description =
+        document.getElementById("skillDescription").value;
+
+
+    listings.unshift({
+
+        title: name,
+
+        category: category,
+
+        description: description,
+
+        exchange: exchange,
+
+        user: "Faizan Shaikh",
+
+        initials: "FS",
+
+        popularity: 100
+
+    });
+
+
+    closeModal("postModal");
+
+
+    document.querySelector("form").reset();
+
+
+    showToast(
+        "Skill Published",
+        "Your skill has been added to the SkillSwap network."
+    );
+
 
     renderListings();
-    renderMembers();
-});
 
-
-/* =========================================================
-   COUNTER ANIMATION
-   ========================================================= */
-
-function animateStats() {
-
-    document.querySelectorAll(".stat-number").forEach(counter => {
-
-        const target = Number(counter.dataset.count);
-        let current = 0;
-
-        const increment = target / 70;
-
-        const timer = setInterval(() => {
-
-            current += increment;
-
-            if (current >= target) {
-                counter.textContent = target.toLocaleString();
-                clearInterval(timer);
-            } else {
-                counter.textContent = Math.floor(current).toLocaleString();
-            }
-
-        }, 25);
-    });
 }
 
 
-/* =========================================================
+/* =====================================================
    LISTINGS
-   ========================================================= */
+===================================================== */
 
-function renderListings(category = "all", search = "") {
+function renderListings(data = listings) {
 
-    const grid = document.getElementById("listingGrid");
+    const grid =
+        document.getElementById("listingGrid");
 
     if (!grid) return;
 
-    let data = listings;
-
-    if (category !== "all") {
-        data = data.filter(item => item.category === category);
-    }
-
-    if (search.trim()) {
-
-        const query = search.toLowerCase();
-
-        data = data.filter(item => {
-
-            const user = members.find(m => m.id === item.user);
-
-            return (
-                item.offer.toLowerCase().includes(query) ||
-                item.want.toLowerCase().includes(query) ||
-                item.category.toLowerCase().includes(query) ||
-                user.name.toLowerCase().includes(query)
-            );
-        });
-    }
 
     grid.innerHTML = "";
 
-    if (!data.length) {
 
-        grid.innerHTML = `
-            <div class="empty-state">
-                <h3>No skills found</h3>
-                <p>Try another keyword or category.</p>
-            </div>
-        `;
-
-        return;
-    }
-
-    data.forEach(item => {
-
-        const user = members.find(m => m.id === item.user);
+    data.forEach((item, index) => {
 
         const card = document.createElement("div");
 
         card.className = "listing-card";
 
+
         card.innerHTML = `
-            <div class="listing-head">
 
-                <div class="user-avatar">
-                    ${getInitials(user.name)}
-                </div>
+            <span class="listing-category">
+                ${item.category.toUpperCase()}
+            </span>
 
-                <div class="listing-user">
-                    <strong>${user.name}</strong>
-                    <small>${user.role}</small>
-                </div>
+            <h3>${item.title}</h3>
 
-                ${user.online ? `<span class="online"></span>` : ""}
-            </div>
+            <p>${item.description}</p>
 
-            <div class="swap-box">
+            <div class="swap-line">
 
-                <div class="swap-side">
-                    <label>OFFERS</label>
-                    <strong>${item.offer}</strong>
-                </div>
+                <small>WANTS IN EXCHANGE</small>
 
-                <div class="swap-arrow">⇄</div>
-
-                <div class="swap-side">
-                    <label>WANTS</label>
-                    <strong>${item.want}</strong>
-                </div>
+                <strong>${item.exchange}</strong>
 
             </div>
-
-            <p class="listing-description">
-                ${item.description}
-            </p>
 
             <div class="listing-footer">
 
-                <button
-                    class="profile-link"
-                    onclick="openProfile(${user.id})"
-                >
-                    View profile
-                </button>
+                <div class="user-mini">
+
+                    <span>${item.initials}</span>
+
+                    <small>${item.user}</small>
+
+                </div>
 
                 <button
-                    class="btn btn-primary"
-                    onclick="sendRequest(${user.id}, '${escapeQuotes(item.offer)}', '${escapeQuotes(item.want)}')"
+                    class="request-btn"
+                    onclick="sendRequest('${item.title}', '${item.user}')"
                 >
                     Request Swap
                 </button>
 
             </div>
+
         `;
 
+
         grid.appendChild(card);
-    });
-}
 
-
-/* =========================================================
-   SEARCH / FILTER
-   ========================================================= */
-
-let selectedCategory = "all";
-
-function filterSkills() {
-
-    const search = document.getElementById("skillSearch").value;
-
-    renderListings(selectedCategory, search);
-}
-
-function filterCategory(category, button) {
-
-    selectedCategory = category;
-
-    document.querySelectorAll(".filter").forEach(btn => {
-        btn.classList.remove("active");
     });
 
-    button.classList.add("active");
 
-    const search = document.getElementById("skillSearch").value;
+    document.getElementById("resultCount").textContent =
+        `${data.length} skills available`;
 
-    renderListings(category, search);
 }
 
 
-/* =========================================================
+/* =====================================================
+   SEARCH LISTINGS
+===================================================== */
+
+function searchListings() {
+
+    const query =
+        document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase();
+
+
+    const category =
+        document
+            .getElementById("categoryFilter")
+            .value;
+
+
+    const filtered = listings.filter(item => {
+
+        const matchesSearch =
+
+            item.title.toLowerCase().includes(query) ||
+
+            item.description.toLowerCase().includes(query) ||
+
+            item.exchange.toLowerCase().includes(query) ||
+
+            item.user.toLowerCase().includes(query);
+
+
+        const matchesCategory =
+
+            category === "all" ||
+
+            item.category === category;
+
+
+        return matchesSearch && matchesCategory;
+
+    });
+
+
+    renderListings(filtered);
+
+}
+
+
+function filterListings() {
+
+    searchListings();
+
+}
+
+
+function setSort(type) {
+
+    let sorted = [...listings];
+
+
+    if (type === "popular") {
+
+        sorted.sort(
+            (a,b) => b.popularity - a.popularity
+        );
+
+    }
+
+
+    if (type === "newest") {
+
+        sorted.reverse();
+
+    }
+
+
+    renderListings(sorted);
+
+}
+
+
+/* =====================================================
+   SEND REQUEST
+===================================================== */
+
+function sendRequest(skill, user) {
+
+    showToast(
+        "Request Sent",
+        `Your request for ${skill} was sent to ${user}.`
+    );
+
+}
+
+
+/* =====================================================
    MEMBERS
-   ========================================================= */
+===================================================== */
 
-function renderMembers(search = "") {
+function renderMembers(data = members) {
 
-    const grid = document.getElementById("memberGrid");
+    const grid =
+        document.getElementById("memberGrid");
 
     if (!grid) return;
 
-    let data = members;
-
-    if (search.trim()) {
-
-        const query = search.toLowerCase();
-
-        data = members.filter(member =>
-            member.name.toLowerCase().includes(query) ||
-            member.role.toLowerCase().includes(query) ||
-            member.offer.toLowerCase().includes(query) ||
-            member.want.toLowerCase().includes(query) ||
-            member.location.toLowerCase().includes(query)
-        );
-    }
 
     grid.innerHTML = "";
+
 
     data.forEach(member => {
 
@@ -771,628 +727,473 @@ function renderMembers(search = "") {
 
         card.className = "member-card";
 
+
         card.innerHTML = `
-            <div class="user-avatar">
-                ${getInitials(member.name)}
+
+            <div class="member-avatar">
+                ${member.initials}
             </div>
 
             <h3>${member.name}</h3>
 
-            <div class="member-role">
-                ${member.role} · ${member.location}
-            </div>
+            <p>${member.role}</p>
 
             <div class="member-skills">
 
-                ${member.skills.map(skill =>
-                    `<span class="skill-pill">${skill}</span>`
-                ).join("")}
+                ${member.skills
+                    .map(skill =>
+                        `<span>${skill}</span>`
+                    )
+                    .join("")}
 
             </div>
 
             <button
-                class="btn btn-glass"
-                onclick="openProfile(${member.id})"
+                class="request-btn"
+                style="margin-top:18px;width:100%"
+                onclick="connectMember('${member.name}')"
             >
                 View Profile
             </button>
+
         `;
 
+
         grid.appendChild(card);
+
     });
-}
 
-function filterMembers() {
-
-    const value = document.getElementById("memberSearch").value;
-
-    renderMembers(value);
 }
 
 
-/* =========================================================
-   PROFILE
-   ========================================================= */
+function searchMembers() {
 
-function openProfile(id) {
+    const query =
 
-    const member = members.find(m => m.id === id);
+        document
+            .getElementById("memberSearch")
+            .value
+            .toLowerCase();
 
-    if (!member) return;
 
-    const content = document.getElementById("profileContent");
+    const filtered = members.filter(member =>
 
-    content.innerHTML = `
-        <div class="profile-top">
+        member.name.toLowerCase().includes(query) ||
 
-            <div class="user-avatar">
-                ${getInitials(member.name)}
-            </div>
+        member.role.toLowerCase().includes(query) ||
 
-            <h2>${member.name}</h2>
+        member.skills.some(skill =>
+            skill.toLowerCase().includes(query)
+        )
 
-            <p>
-                ${member.role} · ${member.location}
-            </p>
+    );
 
-        </div>
 
-        <p class="profile-bio">
-            ${member.bio}
-        </p>
+    renderMembers(filtered);
 
-        <div class="profile-skills-title">
-            Skills offered
-        </div>
-
-        <div class="profile-skills">
-            ${member.skills.map(skill =>
-                `<span class="skill-pill">${skill}</span>`
-            ).join("")}
-        </div>
-
-        <div class="swap-box" style="margin-top:22px;">
-
-            <div class="swap-side">
-                <label>OFFERS</label>
-                <strong>${member.offer}</strong>
-            </div>
-
-            <div class="swap-arrow">⇄</div>
-
-            <div class="swap-side">
-                <label>WANTS</label>
-                <strong>${member.want}</strong>
-            </div>
-
-        </div>
-
-        <button
-            class="btn btn-primary"
-            style="width:100%;margin-top:20px;"
-            onclick="sendRequest(${member.id}, '${escapeQuotes(member.offer)}', '${escapeQuotes(member.want)}')"
-        >
-            Send Swap Request →
-        </button>
-    `;
-
-    document.getElementById("profileModal").classList.add("show");
 }
 
 
-/* =========================================================
-   SEND REQUEST
-   ========================================================= */
+function connectMember(name) {
 
-function sendRequest(userId, offer, want) {
+    showToast(
+        "Profile Selected",
+        `Opening ${name}'s SkillSwap profile.`
+    );
 
-    const user = members.find(m => m.id === userId);
-
-    if (!user) return;
-
-    const newRequest = {
-
-        id: Date.now(),
-
-        type: "outgoing",
-
-        from: userId,
-
-        message: `I would like to exchange ${want} for ${offer}.`,
-
-        offer: want,
-
-        want: offer,
-
-        status: "Pending"
-    };
-
-    requests.unshift(newRequest);
-
-    saveRequests();
-
-    closeModal("profileModal");
-
-    showToast(`Swap request sent to ${user.name}!`);
-
-    updateRequestCount();
 }
 
 
-/* =========================================================
+/* =====================================================
    REQUESTS
-   ========================================================= */
-
-function switchRequestTab(tab, button) {
-
-    document.querySelectorAll(".request-tab").forEach(btn => {
-        btn.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-    renderRequests(tab);
-}
-
+===================================================== */
 
 function renderRequests(type) {
 
-    const container = document.getElementById("requestsList");
+    const container =
+        document.getElementById("requestsContainer");
 
     if (!container) return;
 
-    const data = requests.filter(request => request.type === type);
+
+    let data;
+
+
+    if (type === "incoming") {
+
+        data = incomingRequests;
+
+    }
+
+    else if (type === "sent") {
+
+        data = sentRequests;
+
+    }
+
+    else {
+
+        data = acceptedRequests;
+
+    }
+
 
     container.innerHTML = "";
 
-    if (!data.length) {
 
-        container.innerHTML = `
-            <div class="empty-state">
-                <h3>No requests here</h3>
-                <p>Your connections will appear here.</p>
-            </div>
-        `;
+    data.forEach((request, index) => {
 
-        return;
-    }
+        const card =
+            document.createElement("div");
 
-    data.forEach(request => {
-
-        const user = members.find(member => member.id === request.from);
-
-        const card = document.createElement("div");
 
         card.className = "request-card";
 
+
         let actions = "";
+
 
         if (type === "incoming") {
 
             actions = `
+
                 <div class="request-actions">
+
                     <button
                         class="accept-btn"
-                        onclick="acceptRequest(${request.id})"
+                        onclick="acceptRequest(${index})"
                     >
                         Accept
                     </button>
 
                     <button
                         class="reject-btn"
-                        onclick="rejectRequest(${request.id})"
+                        onclick="rejectRequest(${index})"
                     >
-                        Reject
+                        Decline
                     </button>
+
                 </div>
+
             `;
 
-        } else if (type === "outgoing") {
+        }
+
+
+        else if (type === "sent") {
 
             actions = `
+
                 <div class="request-actions">
+
                     <button
                         class="reject-btn"
-                        onclick="cancelRequest(${request.id})"
+                        onclick="cancelRequest('${request.name}')"
                     >
-                        Cancel
+                        Cancel Request
                     </button>
+
                 </div>
+
             `;
 
-        } else {
+        }
+
+
+        else {
 
             actions = `
+
                 <div class="request-actions">
+
                     <button
                         class="accept-btn"
-                        onclick="openProfile(${user.id})"
+                        onclick="showToast('Swap Opened','Your active skill exchange is ready.')"
                     >
-                        Open Profile
+                        Open Swap
                     </button>
+
                 </div>
+
             `;
+
         }
+
 
         card.innerHTML = `
 
-            <div class="user-avatar">
-                ${getInitials(user.name)}
-            </div>
+            <div class="request-user">
 
-            <div class="request-info">
+                <div class="request-avatar">
+                    ${request.initials}
+                </div>
 
-                <strong>${user.name}</strong>
+                <div>
 
-                <p>
-                    ${user.role} · ${user.location}
-                </p>
+                    <h3>${request.name}</h3>
 
-                <div class="request-swap">
-                    ${request.offer} ⇄ ${request.want}
+                    <p>${request.role}</p>
+
                 </div>
 
             </div>
 
+
+            <div class="request-swap">
+
+                <div class="request-skill">
+
+                    <small>OFFERING</small>
+
+                    <strong>${request.offer}</strong>
+
+                </div>
+
+                <span class="swap-arrow">⇄</span>
+
+                <div class="request-skill">
+
+                    <small>WANTS</small>
+
+                    <strong>${request.want}</strong>
+
+                </div>
+
+            </div>
+
+
             ${actions}
+
         `;
 
+
         container.appendChild(card);
+
     });
+
 }
 
 
-function acceptRequest(id) {
-
-    const request = requests.find(r => r.id === id);
-
-    if (!request) return;
-
-    request.type = "accepted";
-    request.status = "Accepted";
-
-    saveRequests();
-
-    renderRequests("incoming");
-
-    showToast("Swap request accepted!");
-    updateRequestCount();
-}
-
-
-function rejectRequest(id) {
-
-    requests = requests.filter(request => request.id !== id);
-
-    saveRequests();
-
-    renderRequests("incoming");
-
-    showToast("Request rejected.");
-    updateRequestCount();
-}
-
-
-function cancelRequest(id) {
-
-    requests = requests.filter(request => request.id !== id);
-
-    saveRequests();
-
-    renderRequests("outgoing");
-
-    showToast("Request cancelled.");
-    updateRequestCount();
-}
-
-
-function updateRequestCount() {
-
-    const pending = requests.filter(r => r.status === "Pending").length;
-
-    const count = document.getElementById("pendingCount");
-
-    if (count) {
-        count.textContent = pending;
-    }
-}
-
-
-/* =========================================================
-   AUTHENTICATION UI
-   ========================================================= */
-
-let authMode = "login";
-
-function openAuth(mode) {
-
-    authMode = mode;
-
-    updateAuthModal();
-
-    document.getElementById("authModal").classList.add("show");
-}
-
-function toggleAuthMode() {
-
-    authMode = authMode === "login" ? "register" : "login";
-
-    updateAuthModal();
-}
-
-
-function updateAuthModal() {
-
-    const register = authMode === "register";
-
-    document.getElementById("authTitle").textContent =
-        register ? "Join SkillSwap." : "Welcome back.";
-
-    document.getElementById("authSubtitle").textContent =
-        register
-            ? "Create your profile and start exchanging knowledge."
-            : "Sign in to continue your skill journey.";
-
-    document.getElementById("authButtonText").textContent =
-        register ? "Create Account" : "Sign In";
-
-    document.getElementById("nameField").classList.toggle(
-        "hidden",
-        !register
-    );
-
-    document.getElementById("skillFields").classList.toggle(
-        "hidden",
-        !register
-    );
-
-    document.getElementById("authSwitchText").textContent =
-        register
-            ? "Already have an account?"
-            : "Don't have an account?";
-
-    document.getElementById("authSwitchButton").textContent =
-        register
-            ? "Sign in"
-            : "Create one";
-}
-
-
-function handleAuth(event) {
-
-    event.preventDefault();
-
-    const email = document.getElementById("authEmail").value;
-
-    if (authMode === "register") {
-
-        const name = document.getElementById("authName").value;
-        const offer = document.getElementById("offerSkill").value;
-        const want = document.getElementById("wantSkill").value;
-
-        if (!name || !offer || !want) {
-
-            showToast("Please complete all profile fields.");
-
-            return;
-        }
-
-        const customMember = {
-
-            id: Date.now(),
-
-            name: name,
-
-            role: "New SkillSwap Member",
-
-            offer: offer,
-
-            want: want,
-
-            skills: [offer],
-
-            location: "Online",
-
-            bio: "New member of the SkillSwap community.",
-
-            online: true
-        };
-
-        members.push(customMember);
-
-        localStorage.setItem(
-            "skillswap_member",
-            JSON.stringify(customMember)
+function showRequestTab(type) {
+
+    document
+        .querySelectorAll(".request-tab")
+        .forEach(button =>
+            button.classList.remove("active-tab")
         );
 
-        showToast(`Welcome to SkillSwap, ${name}!`);
 
-    } else {
+    event.currentTarget.classList.add("active-tab");
 
-        showToast(`Welcome back! Signed in as ${email}.`);
-    }
 
-    closeModal("authModal");
+    renderRequests(type);
 
-    document.getElementById("authForm").reset();
-
-    renderMembers();
-    renderListings();
 }
 
 
-/* =========================================================
-   NOTIFICATIONS
-   ========================================================= */
+function acceptRequest(index) {
 
-function openNotifications() {
-
-    document
-        .getElementById("notificationPanel")
-        .classList.add("show");
-}
-
-function closeNotifications() {
-
-    document
-        .getElementById("notificationPanel")
-        .classList.remove("show");
-}
+    const request =
+        incomingRequests[index];
 
 
-/* =========================================================
-   MODALS
-   ========================================================= */
+    showToast(
+        "Swap Accepted",
+        `You are now connected with ${request.name}.`
+    );
 
-function closeModal(id) {
 
-    const modal = document.getElementById(id);
+    incomingRequests.splice(index,1);
 
-    if (modal) {
-        modal.classList.remove("show");
-    }
+
+    const count =
+        document.getElementById("requestCount");
+
+
+    count.textContent =
+        incomingRequests.length;
+
+
+    renderRequests("incoming");
+
 }
 
 
-/* =========================================================
+function rejectRequest(index) {
+
+    const request =
+        incomingRequests[index];
+
+
+    incomingRequests.splice(index,1);
+
+
+    showToast(
+        "Request Declined",
+        `${request.name}'s request was declined.`
+    );
+
+
+    document.getElementById("requestCount").textContent =
+        incomingRequests.length;
+
+
+    renderRequests("incoming");
+
+}
+
+
+function cancelRequest(name) {
+
+    showToast(
+        "Request Cancelled",
+        `Your request to ${name} has been cancelled.`
+    );
+
+}
+
+
+/* =====================================================
    TOAST
-   ========================================================= */
+===================================================== */
 
 let toastTimer;
 
-function showToast(message) {
 
-    const toast = document.getElementById("toast");
+function showToast(title, message) {
 
-    document.getElementById("toastMessage").textContent = message;
+    const toast =
+        document.getElementById("toast");
+
+
+    document.getElementById("toastTitle")
+        .textContent = title;
+
+
+    document.getElementById("toastMessage")
+        .textContent = message;
+
 
     toast.classList.add("show");
 
+
     clearTimeout(toastTimer);
 
+
     toastTimer = setTimeout(() => {
+
         toast.classList.remove("show");
-    }, 3000);
+
+    }, 3500);
+
 }
 
 
-/* =========================================================
-   SKILL BUTTON
-   ========================================================= */
+/* =====================================================
+   FEATURED SKILLS
+===================================================== */
 
-function viewSkill(skill) {
+function renderFeatured() {
 
-    showPage("explore");
+    const container =
+        document.getElementById("featuredSkills");
+
+    if (!container) return;
+
+
+    const featured = listings.slice(0,4);
+
+
+    container.innerHTML = "";
+
+
+    featured.forEach((skill, index) => {
+
+        const icons = [
+            "⌘",
+            "✦",
+            "▶",
+            "◎"
+        ];
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className = "skill-card";
+
+
+        card.innerHTML = `
+
+            <div class="skill-icon">
+                ${icons[index]}
+            </div>
+
+            <h3>${skill.title}</h3>
+
+            <p>
+                ${skill.description}
+            </p>
+
+            <div class="skill-meta">
+
+                <span>${skill.category}</span>
+
+                <strong>
+                    ${skill.popularity}% match
+                </strong>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   MODAL CLICK OUTSIDE
+===================================================== */
+
+document.addEventListener("click", function(event) {
+
+    if (
+        event.target.classList.contains("modal")
+    ) {
+
+        event.target.classList.remove("show");
+
+    }
+
+});
+
+
+/* =====================================================
+   INITIALIZATION
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    renderFeatured();
+
+    renderListings();
+
+    renderMembers();
+
+    renderRequests("incoming");
+
 
     setTimeout(() => {
 
-        const search = document.getElementById("skillSearch");
+        document
+            .getElementById("loader")
+            .style.display = "none";
 
-        if (search) {
+    }, 2400);
 
-            search.value = skill;
-
-            filterSkills();
-        }
-
-    }, 200);
-}
-
-
-/* =========================================================
-   LOCAL STORAGE
-   ========================================================= */
-
-function saveRequests() {
-
-    localStorage.setItem(
-        "skillswap_requests",
-        JSON.stringify(requests)
-    );
-}
-
-
-function loadRequests() {
-
-    const stored = localStorage.getItem("skillswap_requests");
-
-    if (stored) {
-
-        try {
-            requests = JSON.parse(stored);
-        } catch {
-            console.log("Could not load requests.");
-        }
-    }
-}
-
-
-/* =========================================================
-   UTILITIES
-   ========================================================= */
-
-function getInitials(name) {
-
-    return name
-        .split(" ")
-        .map(word => word[0])
-        .join("")
-        .substring(0,2)
-        .toUpperCase();
-}
-
-
-function escapeQuotes(text) {
-
-    return String(text)
-        .replace(/'/g, "\\'")
-        .replace(/"/g, '\\"');
-}
-
-
-/* =========================================================
-   INITIALIZE
-   ========================================================= */
-
-loadRequests();
-
-updateRequestCount();
-
-
-/* =========================================================
-   CLOSE MODALS WITH ESC
-   ========================================================= */
-
-document.addEventListener("keydown", event => {
-
-    if (event.key === "Escape") {
-
-        document.querySelectorAll(".modal").forEach(modal => {
-            modal.classList.remove("show");
-        });
-
-        closeNotifications();
-    }
 });
-
-
-/* =========================================================
-   CLOSE NOTIFICATION WHEN CLICKING OUTSIDE
-   ========================================================= */
-
-document.addEventListener("click", event => {
-
-    const panel = document.getElementById("notificationPanel");
-
-    const button = document.querySelector(".notification-btn");
-
-    if (
-        panel &&
-        panel.classList.contains("show") &&
-        !panel.contains(event.target) &&
-        !button.contains(event.target)
-    ) {
-        closeNotifications();
-    }
-});
-```
