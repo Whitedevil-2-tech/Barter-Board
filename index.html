@@ -1,0 +1,711 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap — Exchange Skills. Build Connections.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= PRELOADER ================= -->
+<div id="preloader">
+    <div class="loader-ring"></div>
+    <div class="loader-text">SKILLSWAP</div>
+</div>
+
+<!-- ================= BACKGROUND ================= -->
+<div class="bg-grid"></div>
+<div class="glow glow-one"></div>
+<div class="glow glow-two"></div>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+    <div class="nav-container">
+
+        <a href="#home" class="logo" onclick="showPage('home')">
+            <span class="logo-icon">S</span>
+            <span>Skill<span>Swap</span></span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home" onclick="showPage('home')" class="active">Home</a>
+            <a href="#explore" onclick="showPage('explore')">Explore</a>
+            <a href="#members" onclick="showPage('members')">Members</a>
+            <a href="#requests" onclick="showPage('requests')">Requests</a>
+            <a href="#about" onclick="showPage('about')">About</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="icon-btn notification-btn" onclick="openNotifications()">
+                ♢
+                <span class="notification-dot">4</span>
+            </button>
+
+            <button class="btn btn-outline" onclick="openAuth('login')">
+                Sign In
+            </button>
+
+            <button class="btn btn-primary" onclick="openAuth('register')">
+                Join SkillSwap
+            </button>
+        </div>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="#home" onclick="showPage('home');toggleMobileMenu()">Home</a>
+        <a href="#explore" onclick="showPage('explore');toggleMobileMenu()">Explore</a>
+        <a href="#members" onclick="showPage('members');toggleMobileMenu()">Members</a>
+        <a href="#requests" onclick="showPage('requests');toggleMobileMenu()">Requests</a>
+        <a href="#about" onclick="showPage('about');toggleMobileMenu()">About</a>
+        <button class="btn btn-primary" onclick="openAuth('register');toggleMobileMenu()">Join Now</button>
+    </div>
+</header>
+
+
+<!-- ========================================================= -->
+<!-- ====================== HOME PAGE ========================= -->
+<!-- ========================================================= -->
+
+<main id="home" class="page active-page">
+
+    <!-- HERO -->
+    <section class="hero section">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                <span class="live-dot"></span>
+                2,400+ skills being exchanged
+            </div>
+
+            <h1>
+                Your skills are
+                <span class="gradient-text">currency.</span>
+            </h1>
+
+            <p class="hero-description">
+                Learn something new. Teach what you know.
+                Connect with people who have the skills you need —
+                without spending a single rupee.
+            </p>
+
+            <div class="hero-buttons">
+                <button class="btn btn-primary btn-large" onclick="showPage('explore')">
+                    Explore Skills <span>→</span>
+                </button>
+
+                <button class="btn btn-glass btn-large" onclick="openAuth('register')">
+                    Start Swapping
+                </button>
+            </div>
+
+            <div class="hero-trust">
+                <div class="avatar-stack">
+                    <div class="mini-avatar">A</div>
+                    <div class="mini-avatar">R</div>
+                    <div class="mini-avatar">M</div>
+                    <div class="mini-avatar">S</div>
+                    <div class="mini-avatar">K</div>
+                </div>
+
+                <div>
+                    <strong>20+ active members</strong>
+                    <small>already building connections</small>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- HERO VISUAL -->
+        <div class="hero-visual">
+
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+
+            <div class="swap-center">
+                <div class="swap-logo">⇄</div>
+                <span>SKILL<br>EXCHANGE</span>
+            </div>
+
+            <div class="floating-card card-python">
+                <div class="skill-icon python">PY</div>
+                <div>
+                    <strong>Python</strong>
+                    <small>Offered</small>
+                </div>
+                <span class="arrow-small">↗</span>
+            </div>
+
+            <div class="floating-card card-design">
+                <div class="skill-icon design">✦</div>
+                <div>
+                    <strong>UI Design</strong>
+                    <small>Wanted</small>
+                </div>
+                <span class="arrow-small">↗</span>
+            </div>
+
+            <div class="floating-card card-video">
+                <div class="skill-icon video">▶</div>
+                <div>
+                    <strong>Video Editing</strong>
+                    <small>Offered</small>
+                </div>
+                <span class="arrow-small">↗</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+    <section class="stats-section section-small">
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <span class="stat-number" data-count="2400">0</span>
+                <span class="stat-label">Skills Listed</span>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-number" data-count="820">0</span>
+                <span class="stat-label">Active Members</span>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-number" data-count="1560">0</span>
+                <span class="stat-label">Successful Swaps</span>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-number" data-count="98">0</span>
+                <span class="stat-label">% Satisfaction</span>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+
+        <div class="section-heading centered">
+            <span class="section-tag">HOW IT WORKS</span>
+            <h2>Exchange knowledge.<br><span class="gradient-text">Grow together.</span></h2>
+            <p>Three simple steps. Endless possibilities.</p>
+        </div>
+
+        <div class="steps-grid">
+
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-icon">◎</div>
+                <h3>Create your profile</h3>
+                <p>
+                    Tell the community what you know and
+                    what you want to learn.
+                </p>
+                <span class="step-line"></span>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-icon">⌕</div>
+                <h3>Find your match</h3>
+                <p>
+                    Browse hundreds of skills and discover
+                    people who complement yours.
+                </p>
+                <span class="step-line"></span>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-icon">⇄</div>
+                <h3>Make the swap</h3>
+                <p>
+                    Send a request, connect and exchange
+                    knowledge on your terms.
+                </p>
+                <span class="step-line"></span>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FEATURED SKILLS -->
+    <section class="section dark-section">
+
+        <div class="section-heading">
+            <div>
+                <span class="section-tag">TRENDING NOW</span>
+                <h2>Skills people are<br><span class="gradient-text">looking for.</span></h2>
+            </div>
+
+            <button class="text-btn" onclick="showPage('explore')">
+                View all skills →
+            </button>
+        </div>
+
+        <div class="skill-grid">
+
+            <div class="skill-large-card">
+                <div class="skill-card-top">
+                    <span class="skill-category">DEVELOPMENT</span>
+                    <span class="match-percent">94% match</span>
+                </div>
+                <div class="big-skill-icon">{"</div>
+                <h3>Web Development</h3>
+                <p>HTML · CSS · JavaScript · React</p>
+                <div class="skill-bottom">
+                    <span>184 members</span>
+                    <button onclick="viewSkill('Web Development')">Explore →</button>
+                </div>
+            </div>
+
+            <div class="skill-large-card">
+                <div class="skill-card-top">
+                    <span class="skill-category">DESIGN</span>
+                    <span class="match-percent">91% match</span>
+                </div>
+                <div class="big-skill-icon">✦</div>
+                <h3>UI/UX Design</h3>
+                <p>Figma · Prototyping · Branding</p>
+                <div class="skill-bottom">
+                    <span>126 members</span>
+                    <button onclick="viewSkill('UI/UX Design')">Explore →</button>
+                </div>
+            </div>
+
+            <div class="skill-large-card">
+                <div class="skill-card-top">
+                    <span class="skill-category">CREATIVE</span>
+                    <span class="match-percent">87% match</span>
+                </div>
+                <div class="big-skill-icon">▶</div>
+                <h3>Video Editing</h3>
+                <p>Premiere Pro · After Effects</p>
+                <div class="skill-bottom">
+                    <span>98 members</span>
+                    <button onclick="viewSkill('Video Editing')">Explore →</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta-section section">
+
+        <div class="cta-glow"></div>
+
+        <div class="cta-content">
+            <span class="section-tag">YOUR NEXT SKILL IS OUT THERE</span>
+            <h2>Stop searching.<br><span class="gradient-text">Start swapping.</span></h2>
+            <p>
+                Join students, creators and professionals
+                exchanging knowledge every day.
+            </p>
+
+            <button class="btn btn-primary btn-large" onclick="openAuth('register')">
+                Create Free Profile →
+            </button>
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ==================== EXPLORE PAGE ======================== -->
+<!-- ========================================================= -->
+
+<main id="explore" class="page">
+
+    <section class="inner-page-header">
+        <div>
+            <span class="section-tag">SKILL MARKETPLACE</span>
+            <h1>Explore <span class="gradient-text">skills.</span></h1>
+            <p>Find people who can teach what you want to learn.</p>
+        </div>
+
+        <button class="btn btn-primary" onclick="openAuth('register')">
+            + Post Your Skill
+        </button>
+    </section>
+
+    <section class="explore-section">
+
+        <div class="search-bar-container">
+            <span class="search-icon">⌕</span>
+            <input
+                type="text"
+                id="skillSearch"
+                placeholder="Search skills, people or categories..."
+                oninput="filterSkills()"
+            >
+            <button onclick="filterSkills()">Search</button>
+        </div>
+
+        <div class="filter-row">
+            <button class="filter active" onclick="filterCategory('all', this)">All Skills</button>
+            <button class="filter" onclick="filterCategory('Development', this)">Development</button>
+            <button class="filter" onclick="filterCategory('Design', this)">Design</button>
+            <button class="filter" onclick="filterCategory('Business', this)">Business</button>
+            <button class="filter" onclick="filterCategory('Creative', this)">Creative</button>
+            <button class="filter" onclick="filterCategory('Academic', this)">Academic</button>
+        </div>
+
+        <div id="listingGrid" class="listing-grid">
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ==================== MEMBERS PAGE ======================== -->
+<!-- ========================================================= -->
+
+<main id="members" class="page">
+
+    <section class="inner-page-header centered">
+        <span class="section-tag">THE COMMUNITY</span>
+        <h1>Meet the <span class="gradient-text">swappers.</span></h1>
+        <p>Real people. Real skills. Real connections.</p>
+    </section>
+
+    <section class="members-section">
+
+        <div class="member-search">
+            <span>⌕</span>
+            <input
+                type="text"
+                id="memberSearch"
+                placeholder="Search members..."
+                oninput="filterMembers()"
+            >
+        </div>
+
+        <div id="memberGrid" class="member-grid">
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ==================== REQUESTS PAGE ======================= -->
+<!-- ========================================================= -->
+
+<main id="requests" class="page">
+
+    <section class="inner-page-header">
+        <div>
+            <span class="section-tag">CONNECTION CENTER</span>
+            <h1>Your <span class="gradient-text">requests.</span></h1>
+            <p>Manage your skill exchange connections.</p>
+        </div>
+
+        <div class="request-count">
+            <strong id="pendingCount">4</strong>
+            <span>Pending</span>
+        </div>
+    </section>
+
+    <section class="requests-section">
+
+        <div class="request-tabs">
+            <button class="request-tab active" onclick="switchRequestTab('incoming', this)">
+                Incoming <span>3</span>
+            </button>
+
+            <button class="request-tab" onclick="switchRequestTab('outgoing', this)">
+                Sent <span>2</span>
+            </button>
+
+            <button class="request-tab" onclick="switchRequestTab('accepted', this)">
+                Accepted <span>4</span>
+            </button>
+        </div>
+
+        <div id="requestsList"></div>
+
+    </section>
+
+</main>
+
+
+<!-- ========================================================= -->
+<!-- ====================== ABOUT PAGE ========================= -->
+<!-- ========================================================= -->
+
+<main id="about" class="page">
+
+    <section class="about-hero">
+
+        <span class="section-tag">ABOUT SKILLSWAP</span>
+
+        <h1>
+            Knowledge should be
+            <span class="gradient-text">shared.</span>
+        </h1>
+
+        <p>
+            SkillSwap is a peer-to-peer learning community built around
+            one simple idea: everyone knows something valuable, and
+            everyone has something new to learn.
+        </p>
+
+    </section>
+
+    <section class="about-grid section">
+
+        <div class="about-card large">
+            <span class="about-icon">⇄</span>
+            <h2>Not a marketplace.</h2>
+            <p>
+                There is no buying or selling here. SkillSwap replaces
+                money with knowledge. Your Python expertise could be
+                exactly what a designer needs — while their design
+                knowledge could be what you need next.
+            </p>
+        </div>
+
+        <div class="about-card">
+            <span class="about-icon">◎</span>
+            <h3>Community first</h3>
+            <p>Connect with students, creators and professionals.</p>
+        </div>
+
+        <div class="about-card">
+            <span class="about-icon">◇</span>
+            <h3>Equal exchange</h3>
+            <p>Every skill has value. Every member has something to offer.</p>
+        </div>
+
+        <div class="about-card">
+            <span class="about-icon">✦</span>
+            <h3>Learn continuously</h3>
+            <p>Turn curiosity into practical knowledge through people.</p>
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+            <a href="#home" class="logo">
+                <span class="logo-icon">S</span>
+                <span>Skill<span>Swap</span></span>
+            </a>
+
+            <p>
+                Exchange skills.<br>
+                Build connections.<br>
+                Grow together.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <div>
+                <h4>Platform</h4>
+                <a href="#explore" onclick="showPage('explore')">Explore Skills</a>
+                <a href="#members" onclick="showPage('members')">Members</a>
+                <a href="#requests" onclick="showPage('requests')">Requests</a>
+            </div>
+
+            <div>
+                <h4>Community</h4>
+                <a href="#" onclick="openAuth('register')">Join SkillSwap</a>
+                <a href="#" onclick="openAuth('login')">Sign In</a>
+                <a href="#about" onclick="showPage('about')">About Us</a>
+            </div>
+
+            <div>
+                <h4>Connect</h4>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Discord</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <span>© 2026 SkillSwap. Built for learners.</span>
+        <span>Made with <b>×</b> knowledge</span>
+    </div>
+
+</footer>
+
+
+<!-- ========================================================= -->
+<!-- ================= AUTH MODAL ============================= -->
+<!-- ========================================================= -->
+
+<div id="authModal" class="modal">
+
+    <div class="modal-overlay" onclick="closeModal('authModal')"></div>
+
+    <div class="auth-modal">
+
+        <button class="modal-close" onclick="closeModal('authModal')">×</button>
+
+        <div class="auth-header">
+            <div class="auth-logo">S</div>
+            <h2 id="authTitle">Welcome back.</h2>
+            <p id="authSubtitle">Sign in to continue your skill journey.</p>
+        </div>
+
+        <form id="authForm" onsubmit="handleAuth(event)">
+
+            <div id="nameField" class="form-group hidden">
+                <label>Full Name</label>
+                <input type="text" id="authName" placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="authEmail" placeholder="you@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="authPassword" placeholder="••••••••" required>
+            </div>
+
+            <div id="skillFields" class="hidden">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Skill You Offer</label>
+                        <input type="text" id="offerSkill" placeholder="e.g. Python">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Skill You Want</label>
+                        <input type="text" id="wantSkill" placeholder="e.g. UI Design">
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary auth-submit" type="submit">
+                <span id="authButtonText">Sign In</span> →
+            </button>
+
+        </form>
+
+        <div class="auth-switch">
+            <span id="authSwitchText">Don't have an account?</span>
+            <button onclick="toggleAuthMode()" id="authSwitchButton">Create one</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ================= PROFILE MODAL ================= -->
+
+<div id="profileModal" class="modal">
+
+    <div class="modal-overlay" onclick="closeModal('profileModal')"></div>
+
+    <div class="profile-modal">
+
+        <button class="modal-close" onclick="closeModal('profileModal')">×</button>
+
+        <div id="profileContent"></div>
+
+    </div>
+</div>
+
+
+<!-- ================= NOTIFICATIONS ================= -->
+
+<div id="notificationPanel" class="notification-panel">
+
+    <div class="notification-header">
+        <div>
+            <span class="section-tag">UPDATES</span>
+            <h3>Notifications</h3>
+        </div>
+        <button onclick="closeNotifications()">×</button>
+    </div>
+
+    <div class="notification-item unread">
+        <span class="notification-icon">⇄</span>
+        <div>
+            <strong>New swap request</strong>
+            <p>Riya wants to learn Python from you.</p>
+            <small>2 min ago</small>
+        </div>
+    </div>
+
+    <div class="notification-item unread">
+        <span class="notification-icon">✦</span>
+        <div>
+            <strong>Swap accepted</strong>
+            <p>Arjun accepted your UI Design request.</p>
+            <small>18 min ago</small>
+        </div>
+    </div>
+
+    <div class="notification-item">
+        <span class="notification-icon">●</span>
+        <div>
+            <strong>New member nearby</strong>
+            <p>Meet Priya — she offers Figma.</p>
+            <small>1 hour ago</small>
+        </div>
+    </div>
+
+    <div class="notification-item">
+        <span class="notification-icon">✓</span>
+        <div>
+            <strong>Profile milestone</strong>
+            <p>Your profile reached 100 views.</p>
+            <small>3 hours ago</small>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast" class="toast">
+    <span class="toast-icon">✓</span>
+    <span id="toastMessage">Success!</span>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
+```
